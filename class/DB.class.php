@@ -5,6 +5,7 @@
 class DB {
 
 	private $pdo;
+	public $result = Array();
 
 	/* nawiązanie połączenia PDO z bazą danych w konstruktorze */
 	public function __construct($dbtype, $dbhost, $dbname, $dbuser, $dbpass) {
@@ -17,7 +18,6 @@ class DB {
 	/* wykonanie zapytania PDO */
 	public function query($query, $parameters = array()) {
 
-		print_r($query); print_r($parameters);
 
 		$statement = $this->pdo->prepare($query);
 
@@ -26,7 +26,7 @@ class DB {
         }
 
         if (false !== $statement->execute()) {
-        	return $statement;
+			return $statement;
         } else {
         	throw new ErrorException(print_r($statement->errorInfo(), true));
         }

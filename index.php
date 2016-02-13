@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(~E_NOTICE);
 /* zdefiniowanie głównego katalogu dla piku index.php, względem tego katalogu będą realizowane wszystkie inne operacje dostępu do plików */
 define('INDEX_DIR', __DIR__);
 
@@ -8,7 +8,9 @@ define('INDEX_DIR', __DIR__);
  */
 function autoload($className) {
     $classFileName = INDEX_DIR."/class/$className.class.php";
-    if (is_file($classFileName)) require_once($classFileName);
+    if (is_file($classFileName)) {
+        require_once($classFileName);
+    }
 }
 spl_autoload_register("autoload");
 
@@ -34,6 +36,9 @@ if ( isset($_GET['action']) ) {
 
 	$action = $_GET['action'];
 	$controller->$action();
+}else{
+    //wyswietlamy liste newsow
+    $controller->page();
 }
 
 

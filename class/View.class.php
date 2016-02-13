@@ -5,7 +5,7 @@
 class View {
 
 	private $output = '';
-	
+	private $result = array();
 	/*
 	 * $templateFileName - nazwa pliku z widokiem
 	 * $variables - tablica z danymi do wygenerowania widoku (nazwa_zmiennej => wartość)
@@ -13,12 +13,13 @@ class View {
 	function __construct($templateFileName, $variables = array()) {
 		
 		/* utworzenie zmiennych lokalnych dostępnych dla pliku widoku */
-		extract($variables);
+		//extract($variables);
+
+		$this->result = $variables;
 
 		/* rozpoczęcie rejestrowania renderu widoku do bufora (zamiast na wyjście, na wyjście wyślemy go na sam koniec dziłania) */
         ob_start();
-
-        /* renderowanie widoku */
+         /* renderowanie widoku */
         $filename = INDEX_DIR."/view/$templateFileName.tpl.php";
         include($filename);
 
