@@ -32,6 +32,16 @@ class DB {
         }
 	}
 
+	public function count($query)
+	{
+
+		$stm = $this->pdo->prepare($query);
+		$stm->execute();
+		$count = $stm->rowCount();
+
+		return $count;
+	}
+
 	public function lastInsertId($name) {
 		return $this->pdo->lastInsertId($name);
 	}

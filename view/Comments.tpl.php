@@ -12,6 +12,21 @@
 					<div class="panel-body">
 						<?= $row['comment']; ?>
 					</div><!-- /panel-body -->
+
+
+					<?
+					if($_SESSION['login_id'] == $row['user_id'])
+					{
+						?>
+						<div class="panel-body">
+							 <a href="?action=editcomm&id=<?=$row['id'];?>">Edytuj</a>
+						</div><!-- /panel-body --><?
+					}
+					?>
+
+
+
+
 				</div><!-- /panel panel-default -->
 			</div><!-- /col-sm-5 -->
 

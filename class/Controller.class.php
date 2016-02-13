@@ -40,6 +40,18 @@ class Controller {
 		$this->page->addView($view);
 	}
 
+	public function register()
+	{
+		$view = new View('Register');
+		$this->page->addView($view);
+	}
+
+	public function login()
+	{
+		$view = new View('Login');
+		$this->page->addView($view);
+	}
+
 	public function show()
 	{
 
@@ -62,5 +74,21 @@ class Controller {
 
 		$view = new View('Comments', $this->result);
 		$this->page->addView($view);
+	}
+
+	public function editcomm()
+	{
+		$id = htmlspecialchars($_GET['id']);
+		$comm = new Comment($this->db);
+		$this->result = $comm->getCommentById($id);
+		$view = new View('EditComment', $this->result);
+		$this->page->addView($view);
+	}
+
+	public function logout()
+	{
+		session_destroy();
+		header("Location: index.php");
+
 	}
 }

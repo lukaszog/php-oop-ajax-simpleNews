@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(~E_NOTICE);
 /* zdefiniowanie głównego katalogu dla piku index.php, względem tego katalogu będą realizowane wszystkie inne operacje dostępu do plików */
 define('INDEX_DIR', __DIR__);

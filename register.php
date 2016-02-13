@@ -1,5 +1,4 @@
 <?php
-session_start();
 define('INDEX_DIR', __DIR__);
 
 function autoload($className) {
@@ -19,15 +18,10 @@ include_once "class/Comment.class.php";
 $db = new DB($dbtype, $dbhost, $dbname, $dbuser, $dbpass);
 
 
-$comm = new Comment($db);
+$user = new User($db);
 
-$comm->user = $_POST['nick'];
-$comm->comment = $_POST['comment'];
-$comm->newsid = $_POST['newsid'];
+$user->user_email=htmlspecialchars($_POST['user_email']);
+$user->user_name=htmlspecialchars($_POST['user_name']);
+$user->user_password=md5(htmlspecialchars($_POST['password']));
 
-if($_SESSION['login'] == 'yes')
-{
-    $comm->userid=$_SESSION['login_id'];
-}
-
-$comm->create();
+$user->create();

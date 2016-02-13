@@ -64,7 +64,7 @@ foreach($this->result as $row)
                 <h4>Zostaw komentarz: </h4>
                 <form role="form" id="create-comment-form" action="#" method="post" novalidate="novalidate">
                     <div class="form-group">
-                        <input class="form-control"  type="text" name="nick" placeholder="Nick">
+                        <input class="form-control"  type="text" value="<?=$_SESSION['login_user'];?>" name="nick" placeholder="Nick">
                         <input type="hidden" value="<?=htmlspecialchars($_GET['id']);?>" name="newsid">
                     </div>
                     <div class="form-group">

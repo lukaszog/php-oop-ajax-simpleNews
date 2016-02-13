@@ -30,6 +30,24 @@
                         <button class="btn btn-primary dropdown-toggle" type="button">Lista artykułów</button>
                     </a>
 
+                    <?if($_SESSION['login'] != "yes") { ?>
+                    <a href="index.php?action=register">
+                        <button class="btn btn-primary dropdown-toggle" type="button">Zarejestruj</button>
+                    </a>
+                    <a href="index.php?action=login">
+                        <button class="btn btn-primary dropdown-toggle" type="button">Zaloguj</button>
+                    </a>
+                    <? }
+                        else {
+                            echo "Zalogowany jako: $_SESSION[login_user]";
+
+                            ?>
+                            <a href="index.php?action=logout">
+                                <button class="btn btn-primary dropdown-toggle" type="button">Wyloguj</button>
+                            </a>
+                            <?
+                        }
+                    ?>
                 </div>
             </div>
         </div>
