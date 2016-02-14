@@ -76,12 +76,12 @@ class Controller {
 		$this->page->addView($view);
 	}
 
-	public function editcomm()
+	public function edit()
 	{
 		$id = htmlspecialchars($_GET['id']);
 		$comm = new Comment($this->db);
 		$this->result = $comm->getCommentById($id);
-		$view = new View('EditComment', $this->result);
+		$view = new View('Edit', $this->result);
 		$this->page->addView($view);
 	}
 

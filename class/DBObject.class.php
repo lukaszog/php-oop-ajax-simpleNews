@@ -41,12 +41,16 @@ abstract class DBObject {
 
 		foreach($data as $column => $value) {
 
-            $this->$column = $value;
-            $sets[] = "$column = :$column";
-            $parameters[ $column ] = $value;
+			$columns[] = $column;
+			$values[] = ":$column";
+			$parameters[ $column ] = $value;
         }
         $parameters['id'] = $id;
-        $query = "UPDATE ".static::$table." SET ".implode(',', $sets)." WHERE id = :id";
+        $query = "UPDATE ".static::$table." SET ".implode(',', $values)." WHERE id = :id";
+
+		echo $query;
+		echo $parameters;
+
         $db->query($query, $parameters);
 	}
 

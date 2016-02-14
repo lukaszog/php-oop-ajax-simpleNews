@@ -25,30 +25,49 @@
     <div class="container">
         <div class="row" style="margin-bottom: 2%;">
             <div class="col-xs-12">
-                <div class="dropdown">
-                    <a href="index.php">
-                        <button class="btn btn-primary dropdown-toggle" type="button">Lista artykułów</button>
-                    </a>
 
-                    <?if($_SESSION['login'] != "yes") { ?>
-                    <a href="index.php?action=register">
-                        <button class="btn btn-primary dropdown-toggle" type="button">Zarejestruj</button>
-                    </a>
-                    <a href="index.php?action=login">
-                        <button class="btn btn-primary dropdown-toggle" type="button">Zaloguj</button>
-                    </a>
-                    <? }
-                        else {
-                            echo "Zalogowany jako: $_SESSION[login_user]";
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                         <div class="navbar-header">
 
-                            ?>
-                            <a href="index.php?action=logout">
-                                <button class="btn btn-primary dropdown-toggle" type="button">Wyloguj</button>
-                            </a>
-                            <?
-                        }
-                    ?>
-                </div>
+                            <a class="navbar-brand" href="#">Moja strona</a>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.php">Lista artykułów</a></li>
+                                <?if($_SESSION['login'] != "yes") { ?>
+                                    <li><a href="index.php?action=register">
+                                       Zarejestruj
+                                    </a></li>
+                                    <li><a href="index.php?action=login">
+                                        Zaloguj
+                                    </a></li>
+
+                                <? } ?>
+
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <? if($_SESSION['login'] == "yes") {
+                                echo "Zalogowany jako: $_SESSION[user]";
+
+                                ?>
+                                <a href="index.php?action=logout">
+                                    <button class="btn btn-primary dropdown-toggle" type="button">Wyloguj</button>
+                                </a>
+                                <?
+                                }
+                                ?>
+
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+
+
+
             </div>
         </div>
         <?
@@ -56,6 +75,14 @@
 
          foreach ($views as $view) echo $view; ?>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">Stopka</p>
+        </div>
+    </footer>
     </body>
+
+
     </html>
 

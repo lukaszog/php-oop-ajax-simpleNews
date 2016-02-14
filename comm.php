@@ -24,10 +24,15 @@ $comm = new Comment($db);
 $comm->user = $_POST['nick'];
 $comm->comment = $_POST['comment'];
 $comm->newsid = $_POST['newsid'];
+$comm->commentId = $_POST['comm_id'];
 
-if($_SESSION['login'] == 'yes')
-{
-    $comm->userid=$_SESSION['login_id'];
+if ($_SESSION['login'] == 'yes') {
+    $comm->userid = $_SESSION['id'];
 }
 
-$comm->create();
+if($_GET['edit'] == 'yes')
+{
+    $comm->update();
+}else {
+    $comm->create();
+}

@@ -12,6 +12,7 @@ class Comment extends DBObject {
 	public $data = array();
 	public $newsid;
 	public $userid=0;
+	public $commentId;
 
 	function __construct(DB $db = null)
 	{
@@ -28,6 +29,17 @@ class Comment extends DBObject {
 		);
  		self::store($this->db,$this->data);
 
+	}
+
+	function update()
+	{
+		$this->data = array(
+				'user' => $this->user,
+				'comment'  => $this->comment
+		);
+
+		$stm = $this->db->query("update comments set comment = '$this->comment' where id = '$this->commentId'");
+		//self::set($this->db,$this->commentId,$this->data);
 	}
 
 	function getCommentByNewsId($id)

@@ -30,15 +30,11 @@ foreach($this->result as $row)
             <p class="lead">
                Autor: <?=$autor;?></a>
             </p>
-
             <hr>
-
             <!-- Date/Time -->
             <p><span class="glyphicon glyphicon-time"></span>
                <?=$data;?>
             </p>
-
-
 
             <!-- Post Content -->
             <p class="lead">
@@ -59,12 +55,11 @@ foreach($this->result as $row)
                 <div id='loader-image'><img src='images/loader.gif' width="20" height="20" /></div>
             </div>
 
-            <!-- Comments Form -->
-            <div class="well">
+             <div class="well">
                 <h4>Zostaw komentarz: </h4>
                 <form role="form" id="create-comment-form" action="#" method="post" novalidate="novalidate">
                     <div class="form-group">
-                        <input class="form-control"  type="text" value="<?=$_SESSION['login_user'];?>" name="nick" placeholder="Nick">
+                        <input class="form-control"  type="text" value="<?=$_SESSION['user'];?>" name="nick" placeholder="Nick">
                         <input type="hidden" value="<?=htmlspecialchars($_GET['id']);?>" name="newsid">
                     </div>
                     <div class="form-group">
@@ -73,11 +68,8 @@ foreach($this->result as $row)
                     <button type="submit" class="btn btn-primary">Wyślij</button>
                 </form>
             </div>
-
             <hr>
-
-
-    </div>
+        </div>
 </div>
 
 
@@ -146,7 +138,7 @@ foreach($this->result as $row)
 
                 console.log("Robie");
 
-                $.post("create_comm.php", $(form).serialize())
+                $.post("comm.php", $(form).serialize())
                     .done(function(data) {
 
                         console.log(data);

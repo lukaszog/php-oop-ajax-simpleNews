@@ -4,7 +4,6 @@
     <h2 class="form-signin-heading">Zaloguj się</h2><hr />
 
     <div id="error">
-        <!-- error will be showen here ! -->
     </div>
 
     <div class="form-group">
@@ -44,10 +43,10 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "ajaxLogin.php",
+                    url: "login.php",
                     data: dataString,
                     cache: false,
-                    beforeSend: function(){ $("#login").val('Lacze...');},
+                    beforeSend: function(){ $("#login").val('Czekaj');},
                     success: function(data){
                         if(data == '1')
                         {

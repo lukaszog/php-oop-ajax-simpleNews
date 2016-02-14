@@ -49,17 +49,11 @@ class User  extends DBObject{
 
         if($stm == 1)
         {
-            $_SESSION['login_user']=$this->user_name;
+            $_SESSION['user']=$this->user_name;
             $_SESSION['login']='yes';
-            $_SESSION['login_id']=$userid;
+            $_SESSION['id']=$userid;
             echo "1";
         }
-        else{
-            echo 'nie ma';
-        }
-
     }
-
-
 
 }

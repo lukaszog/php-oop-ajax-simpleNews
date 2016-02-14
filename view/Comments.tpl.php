@@ -11,29 +11,21 @@
 					</div>
 					<div class="panel-body">
 						<?= $row['comment']; ?>
-					</div><!-- /panel-body -->
-
-
+					</div>
 					<?
-					if($_SESSION['login_id'] == $row['user_id'])
+					if($_SESSION['id'] == $row['user_id'])
 					{
 						?>
 						<div class="panel-body">
-							 <a href="?action=editcomm&id=<?=$row['id'];?>">Edytuj</a>
-						</div><!-- /panel-body --><?
+							 <a href="?action=edit&id=<?=$row['id'];?>">Edytuj</a>
+						</div>
+						<?
 					}
 					?>
-
-
-
-
-				</div><!-- /panel panel-default -->
-			</div><!-- /col-sm-5 -->
-
+				</div>
+			</div>
 			<?
 		}
 		?>
 	</div>
-
-
 </div>
